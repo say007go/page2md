@@ -51,6 +51,8 @@ const theme = await page.evaluate(() => ({
   theme: document.documentElement.dataset.theme,
 }));
 await page.waitForTimeout(200);
+const hDark = await page.evaluate(() => Math.ceil(document.body.getBoundingClientRect().height));
+await page.setViewportSize({ width, height: hDark });
 await page.screenshot({ path: path.join(OUT, 'popup-dark.png') });
 console.log(`dark theme: ${JSON.stringify(theme)} → tests/.tmp/popup-dark.png`);
 
