@@ -1,5 +1,10 @@
 # Page2MD · 网页转 Markdown（图片完整内嵌）
 
+[![CI](https://github.com/say007go/page2md/actions/workflows/ci.yml/badge.svg)](https://github.com/say007go/page2md/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/say007go/page2md?color=4f46e5)](https://github.com/say007go/page2md/releases)
+![Chrome MV3](https://img.shields.io/badge/Chrome-MV3-4285F4?logo=googlechrome&logoColor=white)
+[![License](https://img.shields.io/github/license/say007go/page2md?color=059669)](LICENSE)
+
 把网页正文提取成 **一个自包含的 `.md` 文件**：导航、广告、推荐位、评论区、分享条全部去掉，正文里的图片以 **Base64 dataURI 直接写进 Markdown**，不依赖任何外部路径或图床。
 
 > 目标场景：把公众号/新闻/博客文章长期归档到 Obsidian、Typora、思源笔记里，几年后打开仍然有图。
@@ -23,10 +28,18 @@
 
 ## 安装
 
-1. `npm install && npm run build`（或直接用已构建好的 `dist/`）
-2. 打开 `chrome://extensions` → 打开右上角「开发者模式」
-3. 点「加载已解压的扩展程序」→ 选择本项目的 **`dist`** 目录
-4. 建议把扩展固定到工具栏
+**方式一：下载现成安装包**
+
+1. 到 [Releases](https://github.com/say007go/page2md/releases) 下载最新的 `page2md-x.y.z.zip` 并解压
+2. 打开 `chrome://extensions` → 右上角「开发者模式」
+3. 点「加载已解压的扩展程序」→ 选择解压出来的目录
+
+**方式二：从源码构建**
+
+1. `npm install && npm run build`
+2. 同样在 `chrome://extensions` 里选择本项目的 **`dist`** 目录
+
+建议把扩展固定到工具栏。
 
 > 需要 Chrome / Edge 109+。想保存本地 `file://` 页面时，需在扩展详情页打开「允许访问文件网址」。
 
@@ -109,3 +122,7 @@ tests/
   e2e.mjs               真实浏览器端到端
   smoke.mjs             线上文章冒烟测试
 ```
+
+## 许可证
+
+[MIT](LICENSE) © ArthurZhu
