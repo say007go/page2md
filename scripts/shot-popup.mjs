@@ -43,6 +43,17 @@ await page.screenshot({ path: path.join(OUT, 'popup-success.png') });
 console.log(`首屏高 ${h1}px / 完成态高 ${h2}px（Chrome 弹窗上限 600px）`);
 console.log(`screenshot ${width}x${height} → tests/.tmp/popup.png, popup-success.png`);
 
+// 切两次主题：auto -> light -> dark
+await page.click('#themeToggle');
+await page.click('#themeToggle');
+const theme = await page.evaluate(() => ({
+  pref: document.documentElement.dataset.themePref,
+  theme: document.documentElement.dataset.theme,
+}));
+await page.waitForTimeout(200);
+await page.screenshot({ path: path.join(OUT, 'popup-dark.png') });
+console.log(`dark theme: ${JSON.stringify(theme)} → tests/.tmp/popup-dark.png`);
+
 // 不支持页面时的兜底状态（此时 active tab 是扩展页自身）
 const errorPage = await context.newPage();
 await errorPage.setViewportSize({ width, height });

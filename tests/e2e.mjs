@@ -267,6 +267,22 @@ async function main() {
       true,
       '结果提示应能关闭',
     );
+
+    // 主题切换：auto -> light -> dark -> auto
+    const themeOf = () =>
+      popupPage.evaluate(() => ({
+        pref: document.documentElement.dataset.themePref,
+        theme: document.documentElement.dataset.theme,
+      }));
+    assert.equal((await themeOf()).pref, 'auto');
+    await popupPage.click('#themeToggle');
+    assert.deepEqual(await themeOf(), { pref: 'light', theme: 'light' });
+    await popupPage.click('#themeToggle');
+    assert.deepEqual(await themeOf(), { pref: 'dark', theme: 'dark' });
+    await popupPage.click('#themeToggle');
+    assert.equal((await themeOf()).pref, 'auto');
+    ok('主题切换 auto → light → dark → auto');
+
     await popupPage.close();
 
     // ---- 弹窗界面截图（demo 模式，稳定首屏）----

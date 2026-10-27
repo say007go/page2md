@@ -1,6 +1,6 @@
 {
   "name": "page2md",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "Chrome 扩展：网页正文转 Markdown，图片以 Base64 完整内嵌为自包含单文件",

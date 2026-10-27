@@ -60,7 +60,7 @@ main {
 .logo {
   width: 34px;
   height: 34px;
-  border-radius: 10px;
+  border-radius: 11px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: #fff;
   font: 700 15px/1 "Segoe UI", system-ui, sans-serif;
@@ -94,11 +94,53 @@ main {
   white-space: nowrap;
 }
 
+.head-actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.icon-btn {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.icon-btn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid #c7c9f8;
+  outline-offset: 2px;
+}
+
+.icon-btn svg {
+  display: none;
+}
+
+:root[data-theme-pref='auto'] .icon-btn .i-auto,
+:root[data-theme-pref='light'] .icon-btn .i-light,
+:root[data-theme-pref='dark'] .icon-btn .i-dark {
+  display: block;
+}
+
 .icon-link {
   flex: none;
   width: 30px;
   height: 30px;
-  border-radius: 9px;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -121,7 +163,7 @@ main {
 .card {
   background: var(--bg-soft);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 12px 13px;
   box-shadow: var(--shadow);
 }
@@ -184,7 +226,7 @@ main {
 /* ---------- options ---------- */
 .opts {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
 }
 
@@ -282,7 +324,7 @@ main {
 
 .btn {
   height: 38px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid transparent;
   font: inherit;
   font-weight: 600;
@@ -358,7 +400,7 @@ main {
 .status {
   background: var(--bg-soft);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 9px 11px;
 }
 
@@ -412,7 +454,7 @@ main {
   font-size: 11.5px;
   line-height: 1.6;
   padding: 9px 30px 9px 11px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid;
 }
 
@@ -483,4 +525,92 @@ main {
 
 [hidden] {
   display: none !important;
+}
+
+/* ---------- dark theme ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ink: #e8ecf4;
+  --ink-2: #c9d1de;
+  --muted: #8d97a8;
+  --line: #2a3040;
+  --bg: #14171d;
+  --bg-soft: #1b1f27;
+  --brand: #818cf8;
+  --brand-2: #a78bfa;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --err: #f87171;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -14px rgba(0, 0, 0, 0.7);
+}
+
+:root[data-theme='dark'] .opt:hover {
+  background: #1f2430;
+}
+
+:root[data-theme='dark'] .switch {
+  background: #3a4150;
+}
+
+:root[data-theme='dark'] .bar {
+  background: #2b313d;
+}
+
+:root[data-theme='dark'] .card-action {
+  border-top-color: #333a48;
+}
+
+:root[data-theme='dark'] .credit a {
+  text-decoration-color: #3d4553;
+}
+
+:root[data-theme='dark'] .card-meta .dot {
+  background: #475063;
+}
+
+:root[data-theme='dark'] .btn-ghost {
+  background: #1b1f27;
+}
+
+:root[data-theme='dark'] .btn-ghost:hover {
+  background: #232833;
+}
+
+:root[data-theme='dark'] .icon-link,
+:root[data-theme='dark'] .icon-btn {
+  color: #9aa3b2;
+}
+
+:root[data-theme='dark'] .icon-link:hover,
+:root[data-theme='dark'] .icon-btn:hover {
+  color: #f1f5f9;
+  background: #232833;
+}
+
+:root[data-theme='dark'] .result.ok {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+:root[data-theme='dark'] .result.err {
+  color: #fca5a5;
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.28);
+}
+
+:root[data-theme='dark'] .result-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme='dark'] .opt input:focus-visible + .switch {
+  outline-color: #4c4f86;
+}
+
+:root[data-theme='dark'] .foot {
+  color: #7d8695;
+}
+
+:root[data-theme='dark'] .btn-primary {
+  box-shadow: 0 8px 18px -10px rgba(99, 102, 241, 0.75);
 }

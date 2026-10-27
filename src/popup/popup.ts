@@ -34,6 +34,15 @@ const el = {
   bar: document.querySelector('.bar') as HTMLElement,
   result: $('result'),
   shortcutTip: $<HTMLButtonElement>('shortcutTip'),
+  themeToggle: $<HTMLButtonElement>('themeToggle'),
+};
+
+type ThemePref = 'auto' | 'light' | 'dark';
+
+const THEME_LABEL: Record<ThemePref, string> = {
+  auto: '跟随系统',
+  light: '浅色',
+  dark: '深色',
 };
 
 const DEMO = new URLSearchParams(location.search).get('demo') === '1';
@@ -50,6 +59,7 @@ void init();
 
 async function init(): Promise<void> {
   bindResultClose();
+  bindTheme();
   if (DEMO) {
     renderDemo();
     return;
@@ -327,6 +337,31 @@ function bindResultClose(): void {
       el.result.hidden = true;
       el.result.innerHTML = '';
     }
+  });
+}
+
+// ---------------- 主题 ----------------
+
+function currentThemePref(): ThemePref {
+  const value = document.documentElement.dataset.themePref;
+  return value === 'light' || value === 'dark' ? value : 'auto';
+}
+
+function updateThemeButton(): void {
+  const label = THEME_LABEL[currentThemePref()];
+  el.themeToggle.title = `主题：${label}（点击切换）`;
+  el.themeToggle.setAttribute('aria-label', `当前主题：${label}，点击切换`);
+}
+
+function bindTheme(): void {
+  updateThemeButton();
+  el.themeToggle.addEventListener('click', () => {
+    const order: ThemePref[] = ['auto', 'light', 'dark'];
+    const next = order[(order.indexOf(currentThemePref()) + 1) % order.length];
+    const apply = (window as unknown as { __setPage2mdTheme?: (pref: ThemePref) => void })
+      .__setPage2mdTheme;
+    apply?.(next);
+    updateThemeButton();
   });
 }
 

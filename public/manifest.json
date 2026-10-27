@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Page2MD",
   "short_name": "Page2MD",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "一键提取网页正文为 Markdown，图片完整内嵌，单文件离线可读。",
   "minimum_chrome_version": "109",
   "permissions": ["scripting", "storage", "contextMenus", "activeTab", "clipboardWrite"],
