@@ -1,0 +1,8 @@
+node_modules/
+dist/
+release/
+tests/.tmp/
+*.log
+
+# 内部交接文档，不公开
+HANDOFF.md

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Page2MD",
+  "short_name": "Page2MD",
+  "version": "1.0.0",
+  "description": "一键提取网页正文为 Markdown，图片完整内嵌，单文件离线可读。",
+  "minimum_chrome_version": "109",
+  "permissions": ["scripting", "storage", "contextMenus", "activeTab", "clipboardWrite"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "打开 Page2MD，保存正文为 Markdown",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "save-page": {
+      "suggested_key": { "default": "Alt+Shift+M" },
+      "description": "保存整页为 Markdown"
+    },
+    "save-selection": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "保存选中内容为 Markdown"
+    }
+  }
+}
